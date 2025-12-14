@@ -4,6 +4,7 @@
   --accent: #0f111a;
   --accent-a50: #0f111a80;
   --header-height: 60px;
+  --padding-page-x: min(100px, 5%);
 }
 
 * {

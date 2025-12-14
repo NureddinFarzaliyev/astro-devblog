@@ -1,0 +1,21 @@
+---
+import { getCollection, CollectionEntry } from "astro:content"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import BlogCard from "../../components/BlogCard.astro";
+
+const blog: CollectionEntry<"blog">[] = await getCollection("blog");
+---
+<BaseLayout title="Blog Posts">
+  <div id="blog-list">
+    {blog.map(bl => <BlogCard blog={bl} /> )}
+  </div>
+</BaseLayout>
+
+<style>
+#blog-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+</style>
+

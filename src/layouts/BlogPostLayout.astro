@@ -1,0 +1,87 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const { post } = Astro.props as { post: CollectionEntry<"blog"> }
+---
+
+<BaseLayout>
+  <article>
+    <img src={post.data.cover} alt={post.data.title}>
+    <h1 id="post-title">
+      {post.data.title}
+    </h1>
+    <p id="meta">{post.data.author} • {post.data.date}</p>
+    <p id="tags"> {post.data.tags.map(tag => <span>#{tag}</span>)} </p>
+    <p class="td">•••</p>
+    <p id="desc">{post.data.description}</p>
+    <p class="td">•••</p>
+    <div id="content">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  article {
+    margin-top: 50px;
+    padding-bottom: 100px;
+  }
+  
+  #post-title {
+    margin-top: 50px;
+    font-size: clamp(16px, 8vw, 48px);
+  }
+
+  #meta {
+    opacity: 0.5;
+    margin-top: 10px;
+  }
+
+  img {
+    width: 100%;
+    height: 700px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  #desc {
+    font-size: 18px;
+  }
+
+  #tags {
+    margin-top: 15px;
+  
+    & span {
+      padding: 3px 8px;
+      background-color: var(--accent);
+      margin: 0px 4px 0px 0px;
+      border-radius: 3px;
+      user-select: none;
+      opacity: 0.8;
+    }
+  }
+
+  .td {
+    font-size: 32px;
+    text-align: center;
+    opacity: 0.2;
+    margin: 10px 0px;
+  }
+
+  #content {
+    h1, h2, h3, h4, h5, h6 {
+      margin: 30px 0px 15px 0px;
+    }
+    p {
+      margin: 20px 0px;
+    }
+    pre {
+      padding: 20px;
+      border-radius: 10px;
+      background-color: black !important;
+    }
+  }
+
+
+</style>

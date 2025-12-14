@@ -1,6 +1,7 @@
 ---
 import "../styles/globals.css"
 import Header from '../components/Header.astro'
+const { title } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -12,6 +13,19 @@ import Header from '../components/Header.astro'
 </head>
 <body>
   <Header />
-  <slot />
+  <section>
+    { title && <h1> {title} </h1> }
+    <slot />
+  </section>
+  <style>
+    h1 {
+      margin: 50px 0px 25px 0px;
+    }
+    section {
+      padding-top: var(--header-height);
+      padding-right: var(--padding-page-x);
+      padding-left: var(--padding-page-x);
+    }
+  </style>
 </body>
 </html>

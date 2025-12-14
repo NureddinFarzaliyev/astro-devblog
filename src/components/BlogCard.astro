@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+const { blog } = Astro.props as { blog: CollectionEntry<"blog">};
+---
+<a href={`/blog/${blog.id}`}>
+<div>
+  <img src={blog.data.cover} alt={blog.data.title} />
+  <h3>
+    {blog.data.title}
+  </h3>
+  <p>
+    {blog.data.description}
+  </p>
+</div>
+</a>
+
+<style>
+a {
+  text-decoration: none;
+  width: min(400px, 100%);
+  display: block;
+}
+div {
+  width: min(400px, 100%);
+  background-color: #fff; 
+  height: 300px;
+  color: black;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  transition: .2s ease-in-out;
+  &:hover { 
+    scale: 1.03;
+  }
+}
+img { 
+  height: 200px;
+  width: min(400px, 100%);
+  object-fit: cover;
+  pointer-events: none;
+}
+h3 {
+  margin: 10px 10px 7.5px 10px;
+}
+p {
+  margin: 0px 10px 10px 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+h3 {
+ display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+</style>
