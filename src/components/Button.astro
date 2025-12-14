@@ -1,0 +1,42 @@
+---
+const {variant = "primary"} = Astro.props as {
+  variant?: "primary" | "outline"
+}
+---
+
+<button class={variant}>
+<slot />
+</button>
+
+<style>
+button {
+  height: 42px;
+  min-width: 84px;
+  color: white;
+  border: solid 1px var(--accent);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 16px;
+  padding: 0px 15px;
+  flex-shrink: 0;
+
+  &:hover { 
+    scale: 1.05;
+  }
+}
+
+button.primary {
+  background-color: var(--accent);
+  &:hover {
+    background-color: var(--accent-a50);
+  }
+}
+
+button.outline {
+  background-color: var(--accent-a50);
+  &:hover {
+    background-color: var(--accent);
+  }
+}
+</style>

@@ -1,0 +1,53 @@
+<header>
+  <a href="/">
+    <h1>🚀 Devblog</h1>
+  </a>
+  <nav>
+    <ul>
+      <a href="/blog">
+        <li>Blog Posts</li>
+      </a>
+      <a href="/docs">
+        <li>Documentations</li>
+      </a>
+    </ul>
+  </nav>
+</header>
+
+<style>
+header {
+  height: var(--header-height);
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  background-color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: min(100px, 5%);
+  padding-right: min(100px, 5%);
+}
+h1{
+  font-size: 24px;
+}
+a {
+  text-decoration: none;
+  color: white;
+  flex-shrink: 0;
+}
+ul {
+  display: flex;
+  gap: 20px;
+
+  @media (max-width: 420px) {
+    display: none;
+  }
+}
+li {
+  list-style: none;
+  transition: 0.2s;
+  &:hover{
+    opacity: 0.6;
+  }
+}
+</style>

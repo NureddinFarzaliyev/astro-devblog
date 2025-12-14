@@ -1,16 +1,53 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Button from '../components/Button.astro'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+  <main>
+    <h1>🚀 Astro Devblog</h1>
+    <p>Developer Blog Application made with Astro.</p>
+    <div>
+      <a href="/blog">
+        <Button>Blog Posts</Button>
+      </a>
+      <a href="/docs">
+        <Button variant="outline">Documentations</Button>
+      </a>
+    </div>
+  </main>
+
+  <style>
+  main {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;    
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: clamp(24px, 10vw, 50px);
+    text-align: center;
+  }
+  
+  p {
+    opacity: 0.8;
+    margin-top: 16px;
+    text-align: center;
+    font-size: clamp(16px, 1vw, 18px);
+  }
+
+  div { 
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  } 
+
+  a {
+    flex-shrink: 0;
+  }
+  </style>
+</BaseLayout>
