@@ -12,7 +12,7 @@ const { post } = Astro.props as { post: CollectionEntry<"blog"> }
       {post.data.title}
     </h1>
     <p id="meta">{post.data.author} • {post.data.date}</p>
-    <p id="tags"> {post.data.tags.map(tag => <span>#{tag}</span>)} </p>
+    <p id="tags"> {post.data.tags.map(tag => <a href={`/tags/${tag}`}>#{tag}</a>)} </p>
     <p class="td">•••</p>
     <p id="desc">{post.data.description}</p>
     <p class="td">•••</p>
@@ -52,13 +52,20 @@ const { post } = Astro.props as { post: CollectionEntry<"blog"> }
   #tags {
     margin-top: 15px;
   
-    & span {
+    & a {
       padding: 3px 8px;
       background-color: var(--accent);
       margin: 0px 4px 0px 0px;
       border-radius: 3px;
       user-select: none;
       opacity: 0.8;
+      color: white;
+      text-decoration: none;
+      transition: .2s;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 

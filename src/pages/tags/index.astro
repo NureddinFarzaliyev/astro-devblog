@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+
+const blog = await getCollection("blog")
+const tags = [...new Set(blog.flatMap(bl => bl.data.tags))];
+---
+
+<BaseLayout title="Browse Tags">
+  <section>
+  {tags.map(tag => (
+    <a id="tag" href={`/tags/${tag}`}>
+      #{tag}
+    </a>
+  ))}
+  </section>
+</BaseLayout>
+
+<style>
+  #tag {
+    background-color: var(--accent);
+    width: fit-content;
+    font-size: 20px;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    transition: .2s ease-in-out;
+
+    &:hover {
+      scale: 1.05;
+    }
+  }
+  section {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+</style>
