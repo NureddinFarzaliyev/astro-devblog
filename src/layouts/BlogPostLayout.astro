@@ -43,6 +43,10 @@ const { post } = Astro.props as { post: CollectionEntry<"blog"> }
     height: 700px;
     border-radius: 10px;
     object-fit: cover;
+
+    @media (max-width: 768px) {
+      height: 300px;
+    }
   }
 
   #desc {
